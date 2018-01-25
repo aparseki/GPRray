@@ -6,9 +6,11 @@ Multi-offset GPR raytracing script in MATLAB
 This function calculates the travel time of one or more refracted and reflected rays along paths determined by a set number of layers with set velocities at predetermined source-receiver offsets.  Each reflection point is defined as being the mid-point between the source and receiver; refraction is accounted for at layers with contrasting velocity.
 
 2.	Method
+
 Snell’s law is implemented at each interface to correctly bend each ray. Since the angle of incidence on layer 1 is unknown, optimization is used to find the shortest path between each source-receiver pair given the subsurface geometry and velocity structure. All functions used in this script are built into basic MATLAB so no external toolboxes are required.
 
 3.	Instructions
+
 In MATLAB, navigate to the directory where this function (GPRray.m) is saved.  Either in a script or in the command window, define the three required vectors for x-position of each receiver (x), the velocity of each layer (v) and the thickness of each layer (z).  The source is fixed at (0,0).  Vectors v and z must be of the same length. For example:
 
 x = 1:.1:5;
