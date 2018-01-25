@@ -27,7 +27,7 @@ function [TT] = GPRray(x,v,z,ploton,noise)
 %
 % Andrew D. Parsekian, June 2015. Upd. 28 March 2016, 16 March 2017.
 % University of Wyoming, Geology & Geophysics, Laramie, WY
-% Testing only, not for distribution.
+% GPRray, beta  v0.3
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 close all
