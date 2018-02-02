@@ -17,7 +17,7 @@ x = 1:.1:5;
 v = [0.12 0.08 0.10];
 z = [1.0 1.5 1.5];
 
-Execute the function with an output variable defined (in this case, TT, to represent travel time) and the fourth input parameter being either a 1 (yes plot) or 0 (no plot). The fifth input is a noise scaling factor. 
+Execute the function with an output variable defined (in this case, TT, to represent travel time) and the fourth input parameter being either a 1 (yes plot) or 0 (no plot). The fifth input is a noise scaling factor, however noise is only added to the output data TT, not the figure. 
 
 TT = GPRray(x,v,z,1,0.1);
 
