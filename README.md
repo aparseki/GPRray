@@ -17,13 +17,13 @@ x = 1:.1:5;
 v = [0.12 0.08 0.10];
 z = [1.0 1.5 1.5];
 
-Execute the function with an output variable defined (in this case, TT, to represent travel time) and the fourth input parameter being either a 1 (yes plot) or 0 (no plot).  
+Execute the function with an output variable defined (in this case, TT, to represent travel time) and the fourth input parameter being either a 1 (yes plot) or 0 (no plot). The fifth input is a noise scaling factor. 
 
-TT = GPRray(x,v,z,1);
+TT = GPRray(x,v,z,1,0.1);
 
 Selecting the plotting ‘yes’ option with a number 1 will cause two figures to be generated on the screen – one showing the geometric raypaths depth versus offset, and a second showing the travel time-offset curves for each layer.
 
  
 4.	Speed
 
-The forward model is solved at a speed proportional primarily to the number of layers and the number of receivers, but velocity structure is a second-order effect.  The following example was calculated on a modest 1.7 GHz Intel Core i7 processor.  A reasonable maximum number of layers (10) and offsets (50) was defined, and the velocity structure was randomized for each layer-offset number pair within physical constraints of air and water (v = 0.033 m ns-1 to v = 0.3 m ns-1).  In any case, forward modeling does not take longer than 2 seconds.
+The forward model is solved at a speed proportional primarily to the number of layers and the number of receivers, but velocity structure is a second-order effect.
