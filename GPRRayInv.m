@@ -46,15 +46,18 @@ function [d, RESNORM,RESIDUAL] = GPRRayInv(DATA,st,crit)
 
 %% do the dix calcuation, if it fails, just use standard values for start
 
-if isempty('st')==0;
-    [Vdix, depth] = dix_calc(DATA);
-    if isreal([10.*Vdix depth]) ==1;
-        st = [10.*Vdix depth];
-    else
-        st = [ones(1,nlay).*1 ones(1,nlay)];
-    end
-end
+% --> need to fix to avoid non-physical values in addition to complex
 
+% if isempty('st')==0;
+%     [Vdix, depth] = dix_calc(DATA);
+%     if isreal([10.*Vdix depth]) ==1;
+%         st = [10.*Vdix depth];
+%     else
+%         st = [ones(1,nlay).*1 ones(1,nlay)];
+%     end
+% end
+
+st = [ones(1,nlay).*1 ones(1,nlay)];
 
 cnt=0;
 
@@ -85,7 +88,7 @@ X = unique(offsets);
 %% Do optimization
 
 x_diff_log = [];
-options = optimset('TolX',crit,'TolFun',crit);
+options = optimset('TolX',crit,'TolFun',crit,'FinDiffRelStep',crit);
 [d,RESNORM,RESIDUAL] = lsqnonlin(@ObjectiveMisfit,st,lb,ub,options);
 
 
