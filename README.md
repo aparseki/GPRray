@@ -13,7 +13,7 @@ Please see the following reference for detailed explanation of this approach:
 
 Parsekian, A.D. (2018) Inverse Methods To Improve Accuracy of Water Content Estimates from Multi-offset GPR. Journal of Environmental and Engineering Geophysics (2018) 23 (3): 349-361.https://doi.org/10.2113/JEEG23.3.349
 
-3.	Instructions
+3.	Instructions (see instruction video here: https://youtu.be/uRJUrGznOt0)
 
 In MATLAB, navigate to the directory where this function (GPRray.m) is saved.  Either in a script or in the command window, define the three required vectors for x-position of each receiver (x), the velocity of each layer (v) and the thickness of each layer (z).  The source is fixed at (0,0).  Vectors v and z must be of the same length. For example:
 
