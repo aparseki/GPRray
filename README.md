@@ -31,3 +31,13 @@ Selecting the plotting ‘yes’ option with a number 1 will cause two figures t
 4.	Speed
 
 The forward model is solved at a speed proportional primarily to the number of layers and the number of receivers, but velocity structure is a second-order effect.
+
+5. Pick Files
+
+Currently can import pick files from ReflexW into the "DATA" format needed by GPRrayInv. FormatGroup should be set to ASCII-columns, "export several pick..." should NOT be checked, ColumnsGroupBox: "trace number," "pick codes" should be the ONLY boxes checked. Must also pick airwave (pick code 0) and ground wave (pick code 1), though they are not used right now.  If no groundwave is visible, then just pick anything - there need to be some values in this catagory. The resulting PCK file should have exactly seven (7) columns, otherwise this will not work. In general, it is much better to pick more traces if possible, though the run time increases with number of picks and layers.
+
+6. Uncertainty
+
+Currently only bootstrapping uncertainty is implimented.  This is a data-driven approach to estimating uncertainty on all inverted parameters, however it is slow unfortunately.  More about this approach can be found in Parsekian and Grombacher 2015 (Journal of Applied Geophysics) [note: this article is for NMR, but the principles are the same].
+
+
