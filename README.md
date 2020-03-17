@@ -44,4 +44,4 @@ Currently can import pick files from ReflexW into the "DATA" format needed by GP
 
 Currently only bootstrapping uncertainty is implimented.  This is a data-driven approach to estimating uncertainty on all inverted parameters, however it is slow unfortunately.  More about this approach can be found in Parsekian and Grombacher 2015 (Journal of Applied Geophysics) [note: this article is for NMR, but the principles are the same].
 
-
+Parsekian, A. D., & Grombacher, D. (2015). Uncertainty estimates for surface nuclear magnetic resonance water content and relaxation time profiles from bootstrap statistics. Journal of Applied Geophysics, 119, 61-70.
