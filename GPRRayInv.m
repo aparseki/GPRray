@@ -85,7 +85,7 @@ X = unique(offsets);
 %% Do optimization
 
 x_diff_log = [];
-options = optimset('TolX',crit,'TolFun',crit,'FinDiffRelStep',crit);
+options = optimset('TolX',crit,'TolFun',crit);
 [d,RESNORM,RESIDUAL] = lsqnonlin(@ObjectiveMisfit,st,lb,ub,options);
 
 
