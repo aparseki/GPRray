@@ -13,7 +13,7 @@ function [ bs_result ] = GPRray_unc(DATA,strap,resamps)
 %
 % A.Parsekian 17 March 2020
 
-for j = 1:resamps;
+parfor j = 1:resamps;
     
     for i = 1:length(DATA)
         rlen = length(DATA{i});
@@ -22,12 +22,10 @@ for j = 1:resamps;
         n = round(N*p); %// desired number of ones
         result = [ ones(1,n) zeros(1,N-n) ]; %// n ones and N-n zeros
         result = result(randperm(N)); %// random order
-        bsDATA{j,i} = DATA{i}(:,find(result));
+        bsDATA{i} = DATA{i}(:,find(result));
     end
-end
-
-parfor j=1:resamps
-    [bs_d(j,:), ~] = GPRRayInv(bsDATA{:,j},0,1e-3); % inversion done here
+    
+    [bs_d(j,:), ~] = GPRRayInv(bsDATA,0,1e-3); % inversion done here
 end
 
 bs_result(1,:) = mean(bs_d,1);

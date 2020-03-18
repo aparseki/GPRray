@@ -40,6 +40,8 @@ end
 r_point = x./2; % reflection point for each ray
 leg1 = sqrt(r_point.^2+z(1)^2); %triangle base for each raypath
 
+preSz = size(leg1); %get the size for preallocation
+tt1 = zeros(preSz); %preallocate memory
 for i = 1:length(x) %loop through all layer 1 rays based on number of Rx
     if ploton == 1
         plot([0 r_point(i) x(i)],[0 -z(1) 0],'-k'); hold on %plot full raypath
@@ -50,7 +52,7 @@ for i = 1:length(x) %loop through all layer 1 rays based on number of Rx
 end
 
 %% n-layers calculation
-
+TT = zeros([length(v) preSz]); %preallocate meme
 for i = 2:length(v)
     [TT(i,:), ~, ~] = nlayerrays(x,z(1:i),v(1:i),ploton);
 end
