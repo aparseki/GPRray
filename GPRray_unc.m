@@ -27,7 +27,8 @@ for j = 1:resamps;
 end
 
 parfor j=1:resamps
-    [bs_d(j,:), ~] = GPRRayInv(bsDATA{:,j},0,1e-3); % inversion done here
+    
+    [bs_d(j,:), ~] = GPRRayInv({bsDATA{j,:}},0,1e-3); % inversion done here
 end
 
 bs_result(1,:) = mean(bs_d,1);
