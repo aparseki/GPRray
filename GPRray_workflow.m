@@ -10,7 +10,7 @@
 % code from the earliest times and increasing to later times.  Each
 % reflector does NOT have to have the same number of picks.
 
-DATA = importREFLEXpicks('ACMP100_pick3.PCK');
+DATA = importREFLEXpicks('ACMP100_pick.PCK');
 
 % The resulting DATA structure is a cell array where each cell is a
 % reflector and inside each cell is the offsets and travel times associated
