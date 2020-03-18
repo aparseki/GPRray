@@ -2,18 +2,39 @@
 % This workflow is designed around picks made in the ReflexW "*.PCK" file
 % format saved in the same directory as the scripts.
 
-
 %% Load the picks
-% [describe the dataset]
+% input is a pick file "*.PCK" from ReflexW with 7 columns. The important
+% columns are 2, 4, and 7, x, t, and pick code respectively.  Air wave and
+% ground wave must be picked, but are not used at this time. Airwave pick
+% code must be 0 and ground wave must be 1.  Layers must be ascending pick
+% code from the earliest times and increasing to later times.  Each
+% reflector does NOT have to have the same number of picks.
 
 DATA = importREFLEXpicks('ACMP100_pick3.PCK');
 
-%[describe the data structure]
+% The resulting DATA structure is a cell array where each cell is a
+% reflector and inside each cell is the offsets and travel times associated
+% with each pick. This DATA structure is in the format required by
+% GPRrayInv.
 
 %% Perform a basic inversion on the dataset
 %[describe the inputs]
-%result = GPRRayInv(DATA,[],1e-3);
-%[describe the output]
+%
+% starting_mod = starting model. Currently set up to guess a reasonable
+% starting model, under development.
+%
+% convergance_criteria tells lsqnonlin when to stop.  Generally 1e-3 has
+% been found to be the most stable, but using smaller values may be
+% appropriate in special cases.
+
+starting_mod = []; % no input needed for now
+convergance_criteria = 1e-3;
+
+result = GPRRayInv(DATA,starting_mod,convergance_criteria);
+
+% The result is a vector in the form [v v ... t t ...] where v is velocity
+% and t is layer thickness. The length of the vector is 2x# layers. 
+
 %% Perform a boostrapping inversion to estimate uncertainty
 %
 % This component is parallelized, if you have the Parallel Computing
