@@ -72,7 +72,7 @@ lbv = ones(1,nlay).*.32; %lower velocity, physically based on water
 ubv = ones(1,nlay).*(st(1)*4);
 lbz = ones(1,nlay).*.2; %lower bound thickness, could be smaller for very high frequency data
 %ubz = ones(1,nlay).*6; %upper bound, could be larger for very low frequency data
-ubz = ones(1,nlay).*((1/(.5*length(st)))*20); %should add a user defined lb/ub OR automatically defaults to entire physical domain
+ubz = ones(1,nlay).*((1/(.5*length(st)))*20);
 
 lb = [lbv lbz];       % Lower bound
 ub = [ubv ubz];       % Upper bound
@@ -91,7 +91,7 @@ X = unique(offsets);
 %% Do optimization
 
 x_diff_log = [];
-options = optimset('TolX',crit*20,'TolFun',crit/10000,'FinDiffRelStep',crit); % remove "20" and "1000" multipliers to go back to stable version
+options = optimset('TolX',crit,'TolFun',crit*10,'FinDiffRelStep',crit);
 [d,RESNORM,RESIDUAL] = lsqnonlin(@ObjectiveMisfit,st,lb,ub,options);
 
     function x_diff = ObjectiveMisfit(params)
