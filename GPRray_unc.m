@@ -1,4 +1,4 @@
-function [ bs_result ] = GPRray_unc(DATA,strap,resamps)
+function [ bs_result,bs_d ] = GPRray_unc(DATA,strap,resamps)
 %GPRray_unc = calculates uncertainty in velocity and layer thickness using
 %bootstrapping statistics. 
 % DATA    = GPR cmp data structure formatted for GPRrayINV
@@ -12,6 +12,12 @@ function [ bs_result ] = GPRray_unc(DATA,strap,resamps)
 % set it to run overnight.
 %
 % A.Parsekian 17 March 2020
+
+if license('test', 'parallel_computing_toolbox')==1
+    disp('Parallel Processing enabled!')
+else
+    disp('You do not have the Parallel Processing Toolbox. The script will run, but it will take a long time. Consider moving the processing to a computer that has the toolbox and multiple cores.') 
+end
 
 for j = 1:resamps;
     
@@ -61,6 +67,7 @@ for i = 1:2:length(dZ)*2;
     z(i+1:i+2,1) = dZ((i+1)/2);
     v(i:i+1,1)   = dV((i+1)/2);
 end
+figure
 plot(v,z(1:end-1),'-r','linewidth',1.5); hold on
 
 
