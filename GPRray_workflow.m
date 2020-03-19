@@ -30,7 +30,7 @@ DATA = importREFLEXpicks('ACMP100_pick.PCK');
 starting_mod = []; % no input needed for now
 convergance_criteria = 1e-3;
 
-result = GPRRayInv(DATA,starting_mod,convergance_criteria);
+%result = GPRRayInv(DATA,starting_mod,convergance_criteria);
 
 % The result is a vector in the form [v v ... t t ...] where v is velocity
 % and t is layer thickness. The length of the vector is 2x# layers. 
@@ -55,7 +55,7 @@ strap = 0.5; %Proportion of the dataset that is used for bootstrapping.
              %perfect rule for choosing this value, and this is a
              %limitation of bootstrapping.  
              
-resamps = 100; %How many bootstrap resamplings are done. Ideally this
+resamps = 1000; %How many bootstrap resamplings are done. Ideally this
                %number will be as large as possible, hopefully >1,000,
                %however it is recognized that this is computationally
                %expenseive, particularly if you don't have the Parallel

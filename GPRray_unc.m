@@ -42,6 +42,10 @@ bs_result(2,:) = std(bs_d,1);
 
 
 %% Plotting
+figure
+plot([0 0],[0 0],'-','color',[.5 .5 .5]); hold on
+plot([0 0],[0 0],'-','color','r')
+plot([0 0],[0 0],'--','color','k')
 sz = size(bs_d);
 for j = 1:sz(1)
     sz = size(bs_d(j,:));
@@ -67,7 +71,7 @@ for i = 1:2:length(dZ)*2;
     z(i+1:i+2,1) = dZ((i+1)/2);
     v(i:i+1,1)   = dV((i+1)/2);
 end
-figure
+
 plot(v,z(1:end-1),'-r','linewidth',1.5); hold on
 
 
