@@ -73,8 +73,14 @@ if ploton ==1
     set(gca,'Ydir','reverse')
     
     for bg = 1:length(v) %if ploton is selected, output instead in the format to go into inversion
+        
+        if length(noise) == 1;
         noisevec = randn(1,length(TT(bg,:)))*noise;
         TT_{bg} = [x; TT(bg,:)+noisevec];
+        elseif length(noise) ==2;
+        noisevec = randn(1,length(TT(bg,:)))*noise(2);
+        TT_{bg} = [x+noisevec; TT(bg,:)];
+        end
     end
     TT = TT_;
 end
