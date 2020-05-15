@@ -90,6 +90,6 @@ set(gca,'ydir','reverse')
 ylim([0 max([z; zd]+.2)])
 xlabel('velocity [m ns^-^1]')
 ylabel('depth [m]')
-%legend('bootstraps','mean result','Dix','location','northeast')
+legend('bootstraps','mean result','Dix','location','northeast')
 end
 
